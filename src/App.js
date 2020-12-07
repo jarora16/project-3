@@ -6,7 +6,7 @@ import About from './Components/About';
 import Resume from './Components/Resume';
 import Portfolio from './Components/Portfolio';
 
-var PORT = process.env.PORT || 8080;
+//var PORT = process.env.PORT || 8080;
 
 class App extends Component {
 
