@@ -21,7 +21,7 @@ class Resume extends Component {
         return <li key={skills.name}><span style={{width:skills.level}}className={className}></span><em>{skills.name}</em></li>
       })
     }
-
+ 
     return (
       <section id="resume">
 
