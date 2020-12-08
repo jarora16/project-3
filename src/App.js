@@ -1,50 +1,40 @@
-import React, { Component } from 'react';
-import $ from 'jquery';
+import React, { Component } from "react";
+import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
+import Saved from "./pages/Saved";
+import Search from "./pages/Search";
+import Nav from "./components/Nav";
+import { Container} from "./components/Grid";
+import { ToastContainer, Zoom } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 import './App.css';
-import Header from './Components/Header';
-import About from './Components/About';
-import Resume from './Components/Resume';
-import Portfolio from './Components/Portfolio';
-
-var PORT = process.env.PORT || 8080;
 
 class App extends Component {
-
-  constructor(props){
-    super(props);
-    this.state = {
-      foo: 'bar',
-      resumeData: {}
-    };
-
-  }
-
-  getResumeData(){
-    $.ajax({
-      url:'/resumeData.json',
-      dataType:'json',
-      cache: false,
-      success: function(data){
-        this.setState({resumeData: data});
-      }.bind(this),
-      error: function(xhr, status, err){
-        console.log(err);
-        alert(err);
-      }
-    });
-  }
-
-  componentDidMount(){
-    this.getResumeData();
-  }
-
   render() {
     return (
-      <div className="App">
-        <Header data={this.state.resumeData.main}/>
-        <About data={this.state.resumeData.main}/>
-        <Resume data={this.state.resumeData.resume}/>
-        <Portfolio data={this.state.resumeData.portfolio}/>
+      <div>
+        <Nav/>
+        <Router>
+          <Container>
+          <ToastContainer
+            position="top-center"
+            autoClose={5000}
+            transition={Zoom}
+            hideProgressBar
+            newestOnTop
+            closeOnClick
+            rtl={false}
+            pauseOnVisibilityChange
+            draggable={false}
+            pauseOnHover
+          />
+            <Switch>
+              <Route exact path="/" component={Search} />
+              <Route path="/bookshelf" component={Saved} />
+              <Route exact path="/books/:id" component={null} />
+              <Route component={null} />
+            </Switch>
+          </Container>
+        </Router>
       </div>
     );
   }
