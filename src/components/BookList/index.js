@@ -32,7 +32,7 @@ export function BookList({children}) {
                 href={this.props.link}
                 rel="noopener noreferrer"
               >
-                Go to book!
+                Go to Video Game!
               </a>
             </Col>
           </Row>

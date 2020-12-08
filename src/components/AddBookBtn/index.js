@@ -26,7 +26,7 @@ class AddBookBtn extends React.Component{
           <Button type="primary" onClick={() => 
             {this.postToDB(this.props)}
             }>
-            Save Book
+            Save Video Game 
         </Button>
         </div>
         );
