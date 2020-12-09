@@ -4,12 +4,12 @@ import Results from "../components/Results";
 
 class Saved extends Component {
     state = {
-        savedBooks: [],
+        savedGame: [],
     }
 
     componentDidMount() {
-        API.savedBooks()
-            .then(savedBooks => this.setState({ savedBooks: savedBooks }))
+        API.savedGame()
+            .then(savedGame => this.setState({ savedGame: savedGame }))
             .catch(err => console.error(err));
     }
 
@@ -17,7 +17,7 @@ class Saved extends Component {
         return (
             <div className="container">
                 <h2>Saved Games</h2>
-                <Results books={this.state.savedBooks} />
+                <Results savedGame={this.state.savedGame} />
             </div>
         )
     }
