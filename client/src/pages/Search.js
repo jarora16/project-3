@@ -6,27 +6,27 @@ import API from "../utils/API";
 class Search extends React.Component {
     state = {
         value: "",
-        books: []
+        games: []
     };
 
-    componentDidMount() {
-        this.searchBook();
-    }
+    // componentDidMount() {
+    //     this.searchGame();
+    // }
 
-    makeBook = bookData => {
+    makeBook = gameData => {
         return {
-            _id: bookData.id,
-            title: bookData.volumeInfo.title,
-            authors: bookData.volumeInfo.authors,
-            description: bookData.volumeInfo.description,
-            image: bookData.volumeInfo.imageLinks.thumbnail,
-            link: bookData.volumeInfo.previewLink
+            _id: gameData.id,
+            title: gameData.title
+            // authors: bookData.volumeInfo.authors,
+            // description: bookData.volumeInfo.description,
+            // image: bookData.volumeInfo.imageLinks.thumbnail,
+            // link: bookData.volumeInfo.previewLink
         }
     }
 
-    searchBook = query => {
-        API.getBook(query)
-            .then(res => this.setState({ books: res.data.items.map(bookData => this.makeBook(bookData)) }))
+    searchGame = gameData => {
+        API.GET(gameData)
+            .then(res => this.setState({ games: res.data.items.map(gameData => this.makeGame(gameData)) }))
             .catch(err => console.error(err));
     };
 
@@ -40,7 +40,7 @@ class Search extends React.Component {
 
     handleFormSubmit = event => {
         event.preventDefault();
-        this.searchBook(this.state.search);
+        this.searchGame(this.state.search);
     };
 
     render() {
@@ -53,7 +53,7 @@ class Search extends React.Component {
                 />
                 <div className="container">
                     <h2>Results</h2>
-                    <Results books={this.state.books} />
+                    <Results games={this.state.games} />
                 </div>
             </div>
         )
