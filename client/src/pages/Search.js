@@ -25,7 +25,7 @@ class Search extends React.Component {
     }
 
     searchGame = gameData => {
-        API.GET(gameData)
+        API.savedGame(gameData)
             .then(res => this.setState({ games: res.data.items.map(gameData => this.makeGame(gameData)) }))
             .catch(err => console.error(err));
     };
