@@ -16,6 +16,10 @@ passport.use(new GoogleStrategy({
   console.log(accessToken);
 }));
 
+app.get('/auth/google', passport.authenticate('google', {
+  scope: ['profile', 'email']
+}))
+
 // Define middleware here
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
