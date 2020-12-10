@@ -20,6 +20,8 @@ app.get('/auth/google', passport.authenticate('google', {
   scope: ['profile', 'email']
 }))
 
+app.get('/auth/google/callback', passport.authenticate('google'))
+
 // Define middleware here
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
@@ -33,7 +35,7 @@ if (process.env.NODE_ENV === "production") {
 app.use(routes)
 
 // Connect to the Mongo DB
-mongoose.connect(process.env.MONGODB_URI || "mongodb://localhost/googlebooks", { useNewUrlParser: true });
+mongoose.connect(process.env.MONGODB_URI || "mongodb://localhost/googlebooks", { useNewUrlParser: true }, { useUnifiedTopology: true });
 
 app.listen(PORT, () => {
   console.log(`🌎 ==> API server now on port ${PORT}!`);
