@@ -10,7 +10,8 @@
     "client": "cd client && npm run start",
     "install": "cd client && npm install",
     "build": "cd client && npm run build",
-    "heroku-postbuild": "cd client && npm install --only=dev && npm install && npm run build"
+    "heroku-postbuild": "cd client && npm install --only=dev && npm install && npm run build",
+    "dev": "nodemon server.js"
   },
   "author": "",
   "license": "ISC",
@@ -22,7 +23,10 @@
     "axios": "^0.19.2",
     "express": "^4.17.1",
     "if-env": "^1.0.4",
-    "mongodb": "^3.6.3",
-    "mongoose": "^5.11.6"
+
+    "mongoose": "^5.11.6",
+    "passport": "^0.4.1",
+
+
   }
 }
