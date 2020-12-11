@@ -10,15 +10,7 @@ class Search extends React.Component {
     };
 
     
-    // fetch("https://rawg-video-games-database.p.rapidapi.com/games", {
-        
-    // })
-    // .then(response => {
-    //     console.log(response);
-    // })
-    // .catch(err => {
-    //     console.error(err);
-    // });
+
 
     async componentDidMount() {
         //console.log("poop");
@@ -95,15 +87,35 @@ class Search extends React.Component {
                     search= {this.state.search}
                     handleInputChange={this.handleInputChange}
                     handleFormSubmit={this.handleFormSubmit}
-                />
+                    
+                /> 
+               
                 <div className="container">
                     <h2>Results</h2>
+                    {/* <div class= "row">
+                        <div class="column"> <p>Title</p></div>
+                        <div class="column"> <p> Rating </p></div>
+                        <div class="column"> <p> Description</p></div>
+                    </div> */}
+                    <div class="row">
+                        <div class="col-md-4">
+                            {this.state.game.map(item => (
+                                <p>Game: {item.name}</p> // item is a place holder, it can be anything like "x"
+                            ))}
+                        </div>
+                        <div class = "column"> <p></p></div>
+                        <div class="col-md-4">
+                            {this.state.game.map(item => (
+                                <p>Rating: {item.rating}</p>
+                            ))}
+                        </div>
+                        <div class="col-md-4">
+                            {this.state.game.map(item => (
+                                <p>Released Date: {item.released}</p>
+                            ))}
+                        </div>
+                    </div>
                     {/* <Results games={this.state.games} /> */}
-                    {this.state.game.map(item => (
-                        <p>{item.name}</p>
-                        // <p>{item.backgroundImage}</p>
-
-                    ))}
                 </div>
             </div>
         )

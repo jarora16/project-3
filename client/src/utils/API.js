@@ -14,13 +14,7 @@ var Game = {
 
 
 var gamefunctions = {
-//   async componenetDidMount() {
-//     let url = 'https://rawg-video-games-database.p.rapidapi.com/games';
-//     const response = await fetch(url);
-//     const data = await response.json();
-//     console.log(data);
-//     this.setState({ game: data.results[0], loading: false });
-//   },
+
   
   // Deletes the book with the given id
   getGame: function () {
