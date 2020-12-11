@@ -4,24 +4,24 @@ import API from "../../utils/API";
 class Results extends Component {
 
     state = {
-        savedBooks: [],
+        savedGame: [],
     }
 
     componentDidMount() {
-        API.savedBooks()
-            .then(savedBooks => this.setState({ savedBooks: savedBooks }))
+        API.savedGame()
+            .then(savedGame => this.setState({ savedGame: savedGame }))
             .catch(err => console.error(err));
     }
 
-    handleSave = book => {
+    handleSave = game => {
 
-        if (this.state.savedBooks.map(book => book._id).includes(book._id)) {
-            API.deleteBook(book._id)
-                .then(deletedBook => this.setState({ savedBooks: this.state.savedBooks.filter(book => book._id !== deletedBook._id) }))
+        if (this.state.savedGame.map(game => game._id).includes(game._id)) {
+            API.deleteBook(game._id)
+                .then(deletedGame => this.setState({ savedGame: this.state.savedGame.filter(game => game._id !== deletedGame._id) }))
                 .catch(err => console.error(err));
         } else {
-            API.saveBook(book)
-                .then(savedBook => this.setState({ savedBooks: this.state.savedBooks.concat([savedBook]) }))
+            API.savedGame(game)
+                .then(savedGame => this.setState({ savedGame: this.state.savedGame.concat([savedGame]) }))
                 .catch(err => console.error(err));
         }
     }
@@ -29,11 +29,11 @@ class Results extends Component {
     render() {
         return (
             <div>
-                {!this.props.books.length ? (
+                {!this.props.game ? ( // might need to add this.props.game.length 
                     <h1 className="text-center">No Results to Display</h1>
                 ) : (
                         <div>
-                            {this.props.books.map(result => (
+                            {this.props.game.map(result => (
                                 <div className="card mb-3" key={result._id}>
                                     <div className="row">
                                         <div className="col-md-2">
@@ -46,7 +46,7 @@ class Results extends Component {
                                                 <div>
                                                     <a href={result.link} className="btn badge-pill btn-outline-dark mt-3" target="_blank" >View</a>
                                                     <button onClick={() => this.handleSave(result)} className="btn badge-pill btn-outline-warning mt-3 ml-3" >
-                                                        {this.state.savedBooks.map(book => book._id).includes(result._id) ? "Unsave" : "Save"}
+                                                        {this.state.game.map(game => game._id).includes(result._id) ? "Unsave" : "Save"}
                                                     </button>
                                                 </div>
                                             </div>

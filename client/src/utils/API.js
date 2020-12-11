@@ -1,19 +1,43 @@
 import axios from "axios";
 
-export default {
-  getBook: function (query) {
-    return axios.get(`https://www.googleapis.com/books/v1/volumes?q=${query}`);
+//  var axios = require("axios").default;
+
+var Game = {
+  method: 'GET',
+  url: 'https://rawg-video-games-database.p.rapidapi.com/games',
+  headers: {
+    'x-rapidapi-key': 'b6be4d9121msh3f7dc068abfd0afp148b28jsn9b27b7f7878e',
+    'x-rapidapi-host': 'rawg-video-games-database.p.rapidapi.com'
   },
+}
+
+
+
+var gamefunctions = {
+
+  
   // Deletes the book with the given id
-  deleteBook: function (id) {
-    return axios.delete("/api/books/" + id).then(result => result.data);
+  getGame: function () {
+    return axios.get("/api/games").then(Game => Game.data);
+  },
+
+  deleteGame: function (id) {
+    return axios.delete("/api/games/" + id).then(Game => Game.data);
   },
   // Saves a book to the database
-  saveBook: function (bookData) {
-    return axios.post("/api/books", bookData).then(result => result.data);
+   saveGame: function (gameData) {
+    return axios.post("/api/games", gameData).then(Game => Game.data);
   },
   // Get the saved a books from the database
-  savedBooks: function () {
-    return axios.get("/api/books").then(result => result.data);
-  }
+  savedGame: function () {
+    return axios.get("/api/games").then(Game => Game.data);
+  },
+  
 };
+ 
+
+
+console.log(Game);
+
+export default gamefunctions;
+
