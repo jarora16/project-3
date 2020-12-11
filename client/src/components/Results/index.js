@@ -29,7 +29,7 @@ class Results extends Component {
     render() {
         return (
             <div>
-                {!this.props.game ? ( // might need to ass this.props.game.length 
+                {!this.props.game ? ( // might need to add this.props.game.length 
                     <h1 className="text-center">No Results to Display</h1>
                 ) : (
                         <div>

@@ -9,14 +9,18 @@ var Game = {
     'x-rapidapi-key': 'b6be4d9121msh3f7dc068abfd0afp148b28jsn9b27b7f7878e',
     'x-rapidapi-host': 'rawg-video-games-database.p.rapidapi.com'
   },
+}
 
- async componenetDidMount()  {
-    let url = 'https://rawg-video-games-database.p.rapidapi.com/games';
-   const response = await fetch(url);
-   const data = await response.json();
-   console.log(data);
-   this.setState({ game: data.results[0], loading: false });
-  },
+
+
+var gamefunctions = {
+//   async componenetDidMount() {
+//     let url = 'https://rawg-video-games-database.p.rapidapi.com/games';
+//     const response = await fetch(url);
+//     const data = await response.json();
+//     console.log(data);
+//     this.setState({ game: data.results[0], loading: false });
+//   },
   
   // Deletes the book with the given id
   getGame: function () {
@@ -27,7 +31,7 @@ var Game = {
     return axios.delete("/api/games/" + id).then(Game => Game.data);
   },
   // Saves a book to the database
-  saveGame: function (gameData) {
+   saveGame: function (gameData) {
     return axios.post("/api/games", gameData).then(Game => Game.data);
   },
   // Get the saved a books from the database
@@ -36,8 +40,10 @@ var Game = {
   },
   
 };
+ 
+
 
 console.log(Game);
 
-export default Game;
+export default gamefunctions;
 
