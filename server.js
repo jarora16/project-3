@@ -1,11 +1,14 @@
 const express = require("express");
 const mongoose = require("mongoose");
 const routes = require("./routes");
-require('./models/user')
+const db = require("./models")
+db.User
+require('./models/User')
 
 require("./services/passport")
 
-const authRoutes = require('./routes/authRoutes')
+const authRoutes = require('./routes/authRoutes');
+const keys = require("./config/keys");
 
 const PORT = process.env.PORT || 3001;
 const app = express();
@@ -25,7 +28,7 @@ if (process.env.NODE_ENV === "production") {
 app.use(routes)
 
 // Connect to the Mongo DB
-mongoose.connect(process.env.MONGODB_URI || "mongodb://localhost/googlebooks", { useNewUrlParser: true }, { useUnifiedTopology: true });
+mongoose.connect(keys.mongoURI || "mongodb://localhost/googlebooks", { useNewUrlParser: true }, { useUnifiedTopology: true });
 
 app.listen(PORT, () => {
   console.log(`🌎 ==> API server now on port ${PORT}!`);
