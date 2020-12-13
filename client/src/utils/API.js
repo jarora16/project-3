@@ -17,10 +17,12 @@ var gamefunctions = {
 
   
   // Deletes the book with the given id
-  getGame: function () {
+  getGames: function () {
     return axios.get("/api/games").then(Game => Game.data);
   },
-
+  getSavedGames: function () {
+    return axios.get("/api/games").then(Game => Game.data);
+  },
   deleteGame: function (id) {
     return axios.delete("/api/games/" + id).then(Game => Game.data);
   },
@@ -29,9 +31,7 @@ var gamefunctions = {
     return axios.post("/api/games", gameData).then(Game => Game.data);
   },
   // Get the saved a books from the database
-  savedGame: function () {
-    return axios.get("/api/games").then(Game => Game.data);
-  },
+ 
   
 };
  
