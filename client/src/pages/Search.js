@@ -1,5 +1,6 @@
 import React from "react";
 import Form from "../components/Form";
+import GameListItem from "../components/Form/GameListItem";
 import Results from "../components/Results";
 import API from "../utils/API";
 
@@ -96,25 +97,10 @@ class Search extends React.Component {
                         
                 </div>
                     
-                    {this.state.game.map((item, index) => (
-                        item.name ? (<div class="row" key = {index}>
-                        <div class="col-md-4">
-                        
-                                <p>Game: {item.name}</p>
-                                {/* // <p>image: </p>, <img src= {item.background_image} height={100} /> // item is a place holder, it can be anything like "x" */}
-                        
-                        </div>
-                        <div class = "column"> <p></p></div>
-                        <div class="col-md-4">
-                            
-                                <p>Rating: {item.rating}</p>
-                        
-                        </div>
-                        <div class="col-md-4">
-                                <p>Released Date: {item.released}</p>
-                        
-                        </div>
-                        </div>): null 
+                    {this.state.game.map((game, index) => (
+                        game.name ? (
+                            <GameListItem key={index} game={game} />
+                        ): null 
                         // <div class="row">
                         //     <div class="col-md-4">
                             
