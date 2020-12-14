@@ -30,6 +30,7 @@ class Search extends React.Component {
     };
       
 
+    // Has the search function working correctly
     searchGame = async gameData => {
         let url = 'https://rawg-video-games-database.p.rapidapi.com/games?search=' + gameData;
         var apiGame =
@@ -45,11 +46,25 @@ class Search extends React.Component {
         const data = await response.json();
         console.log("handlesgamesubmit: ", data);
         this.setState({ game: data.results });
-
-        // API.savedGame(gameData)
-        //     .then(res => this.setState({ games: res.data.items.map(gameData => this.makeGame(gameData)) }))
-        //     .catch(err => console.error(err));
     };
+
+    // WORKING ON CURRENTLY
+
+    // searchReview = async gameData => {
+    //     let url = 'https://whatoplay.p.rapidapi.com/games/' ;
+    //     var apiGame =
+    //     {
+    //         "method": "GET",
+    //         "headers": {
+    //             "x-rapidapi-key": "fbc79b8878msh8445e3cc4e70eb7p11ff79jsncf79389df00f",
+    //             "x-rapidapi-host": "whatoplay.p.rapidapi.com",
+    //             "useQueryString": true
+    //         }
+    //     }
+    //     const response = await fetch(url, apiGame);
+    //     const data = await response.json();
+    //     console.log("reviewdata: ", data);
+    // };
 
     handleInputChange = event => {
         const name = event.target.name;
@@ -61,18 +76,13 @@ class Search extends React.Component {
 
     handleGameSubmit = event => {
         event.preventDefault();
-        console.log("searching for a game: ", this.state.search)
         this.searchGame(this.state.search);
-
-
-
-        
     };
 
     handleReviewSubmit = event => {
         event.preventDefault();
-        console.log("searching for a review: ", this.state.search)
-        // this.searchGame(this.state.search);
+        console.log("searching for the review: ");
+        this.searchReview(this.state.search);
     };
 
     // var req = unirest("GET", "https://rawg-video-games-database.p.rapidapi.com/games/portal");
