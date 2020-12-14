@@ -1,26 +1,26 @@
 const mongoose = require("mongoose");
 const db = require("../models");
+const keys = require("../config/keys");
 
 // This file empties the Books collection and inserts the books below
 
 mongoose.connect(
-    process.env.MONGODB_URI ||
-    "mongodb://localhost/googleboks"
+    keys.mongoURI
 );
 
-const bookSeed =
-{
-    authors: ["Suzanne Collins"],
-    description: "Set in a dark vision of the near future, a terrifying reality TV show is taking place. Twelve boys and twelve girls are forced to appear in a live event called The Hunger Games. There is only one rule: kill or be killed. When sixteen-year-old Katniss Everdeen steps forward to take her younger sister's place in the games, she sees it as a death sentence. But Katniss has been close to death before. For her, survival is second nature.",
-    image: "http://books.google.com/books/content?id=sazytgAACAAJ&printsec=frontcover&img=1&zoom=1&source=gbs_api",
-    link: "http://books.google.com/books?id=sazytgAACAAJ&dq=title:The+Hunger+Games&hl=&source=gbs_api",
-    title: "The Hunger Games",
-}
+const gameSeed =
+    [{
+        authors: ["Valve"],
+        description: "Portal™ is a new single player game from Valve. Set in the mysterious Aperture Science Laboratories, Portal has been called one of the most innovative new games on the horizon and will offer gamers hours of unique gameplay.",
+        image: "https://i.pinimg.com/originals/73/37/ee/7337ee3f05f2c05bbfcd8f7ceffe32dd.jpg",
+        link: "https://store.steampowered.com/app/400/Portal/",
+        title: "Portal"
+    }]
 
 
-db.Book
+db.Game
     .remove({})
-    .then(() => db.Book.collection.insertMany(bookSeed))
+    .then(() => db.Game.collection.insertMany(gameSeed))
     .then(data => {
         console.log(data.result.n + " records inserted!");
         process.exit(0);
