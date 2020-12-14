@@ -3,7 +3,7 @@ const db = require("../models");
 // Defining methods for the booksController
 module.exports = {
   findAll: function(req, res) {
-    db.Book
+    db.Game
       .find(req.query)
       .sort({ date: -1 })
       .then(dbModel => res.json(dbModel))
@@ -13,7 +13,7 @@ module.exports = {
       });
   },
   findById: function(req, res) {
-    db.Book
+    db.Game
       .findById(req.params.id)
       .then(dbModel => res.json(dbModel))
       .catch(err => {
@@ -22,7 +22,7 @@ module.exports = {
       });
   },
   create: function(req, res) {
-    db.Book
+    db.Game
       .create(req.body)
       .then(dbModel => res.json(dbModel))
       .catch(err => {
@@ -31,7 +31,7 @@ module.exports = {
       });
   },
   update: function(req, res) {
-    db.Book
+    db.Game
       .findOneAndUpdate({ _id: req.params.id }, req.body)
       .then(dbModel => res.json(dbModel))
       .catch(err => {
@@ -40,7 +40,7 @@ module.exports = {
       });
   },
   remove: function(req, res) {
-    db.Book
+    db.Game
       .findById({ _id: req.params.id })
       .then(dbModel => dbModel.remove())
       .then(dbModel => res.json(dbModel))
