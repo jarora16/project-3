@@ -30,7 +30,22 @@ class Search extends React.Component {
     };
       
 
+<<<<<<< HEAD
+    makeBook = gameData => {
+        return {
+            _id: gameData.name,
+            Name: gameData.rating,
+            rating: gameData.released
+            // authors: bookData.volumeInfo.authors,
+            // description: bookData.volumeInfo.description,
+            // image: bookData.volumeInfo.imageLinks.thumbnail,
+            // link: bookData.volumeInfo.previewLink
+        }
+    }
+
+=======
     // Has the search function working correctly
+>>>>>>> master
     searchGame = async gameData => {
         let url = 'https://rawg-video-games-database.p.rapidapi.com/games?search=' + gameData;
         var apiGame =
@@ -48,6 +63,10 @@ class Search extends React.Component {
         this.setState({ game: data.results });
     };
 
+<<<<<<< HEAD
+    // {...state,currentMenu: action.menu.filter((menu) =>
+    //     state.currentCategoryId == menu.category_id)}
+=======
     // WORKING ON CURRENTLY
 
     // searchReview = async gameData => {
@@ -65,13 +84,19 @@ class Search extends React.Component {
     //     const data = await response.json();
     //     console.log("reviewdata: ", data);
     // };
+>>>>>>> master
 
     handleInputChange = event => {
         const name = event.target.name;
         const value = event.target.value;
-        this.setState({
-            [name]: value
-        });
+        
+        if (name === this.state.name)
+        {
+            return this.state.name;
+        }
+        // this.setState({
+        //     [name]: value
+        // });
     };
 
     handleGameSubmit = event => {
@@ -101,15 +126,14 @@ class Search extends React.Component {
                
                 <div className="container">
                     <h2>Results</h2>
-                    {/* <div class= "row">
-                        <div class="column"> <p>Title</p></div>
-                        <div class="column"> <p> Rating </p></div>
-                        <div class="column"> <p> Description</p></div>
-                    </div> */}
+                    <div className="container">
+                        
+                </div>
                     <div class="row">
                         <div class="col-md-4">
                             {this.state.game.map(item => (
-                                <p>Game: {item.name}</p> // item is a place holder, it can be anything like "x"
+                                <p>Game: {item.name}</p>
+                                // <p>image: </p>, <img src= {item.background_image} height={100} /> // item is a place holder, it can be anything like "x"
                             ))}
                         </div>
                         <div class = "column"> <p></p></div>
@@ -123,6 +147,11 @@ class Search extends React.Component {
                                 <p>Released Date: {item.released}</p>
                             ))}
                         </div>
+                        {/* { <div class="col-md-3">
+                            {this.state.game.map(item => (
+                               <p>image: </p>, <img src= {item.background_image} height={100} />
+                            ))} IMAGES FOR EACH GAME BUT NEED TO ALGIN WITH OTHER INFORMATION
+                        </div> } */} 
                     </div>
                     {/* <Results games={this.state.games} /> */}
                 </div>
