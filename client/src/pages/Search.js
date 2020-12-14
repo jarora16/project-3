@@ -6,7 +6,8 @@ import API from "../utils/API";
 class Search extends React.Component {
     state = {
         value: "",
-        game: []
+        game: [],
+        search : ""
     };
 
     
@@ -55,13 +56,13 @@ class Search extends React.Component {
         const name = event.target.name;
         const value = event.target.value;
         
-        if (name === this.state.name)
-        {
-            return this.state.name;
-        }
-        // this.setState({
-        //     [name]: value
-        // });
+        // if (name === this.state.name)
+        // {
+        //     return this.state.name;
+        // }
+        this.setState({
+            [name]: value
+        });
     };
 
     handleGameSubmit = event => {
@@ -69,11 +70,11 @@ class Search extends React.Component {
         this.searchGame(this.state.search);
     };
 
-    handleReviewSubmit = event => {
-        event.preventDefault();
-        console.log("searching for the review: ");
-        this.searchReview(this.state.search);
-    };
+//    //handleReviewSubmit = event => {
+//       event.preventDefault();
+//         console.log("searching for the review: ");
+//        this.searchReview(this.state.search);
+//     };
 
     // var req = unirest("GET", "https://rawg-video-games-database.p.rapidapi.com/games/portal");
 
@@ -94,30 +95,51 @@ class Search extends React.Component {
                     <div className="container">
                         
                 </div>
-                    <div class="row">
+                    
+                    {this.state.game.map((item, index) => (
+                        item.name ? (<div class="row" key = {index}>
                         <div class="col-md-4">
-                            {this.state.game.map(item => (
+                        
                                 <p>Game: {item.name}</p>
-                                // <p>image: </p>, <img src= {item.background_image} height={100} /> // item is a place holder, it can be anything like "x"
-                            ))}
+                                {/* // <p>image: </p>, <img src= {item.background_image} height={100} /> // item is a place holder, it can be anything like "x" */}
+                        
                         </div>
                         <div class = "column"> <p></p></div>
                         <div class="col-md-4">
-                            {this.state.game.map(item => (
+                            
                                 <p>Rating: {item.rating}</p>
-                            ))}
+                        
                         </div>
                         <div class="col-md-4">
-                            {this.state.game.map(item => (
                                 <p>Released Date: {item.released}</p>
-                            ))}
+                        
                         </div>
+                        </div>): null 
+                        // <div class="row">
+                        //     <div class="col-md-4">
+                            
+                        //             <p>Game: {item.name}</p>
+                        //             {/* // <p>image: </p>, <img src= {item.background_image} height={100} /> // item is a place holder, it can be anything like "x" */}
+                            
+                        //     </div>
+                        //     <div class = "column"> <p></p></div>
+                        //     <div class="col-md-4">
+                                
+                        //             <p>Rating: {item.rating}</p>
+                            
+                        //     </div>
+                        //     <div class="col-md-4">
+                        //             <p>Released Date: {item.released}</p>
+                            
+                        //     </div>
+                        // </div>
+                          ))}
                         {/* { <div class="col-md-3">
                             {this.state.game.map(item => (
                                <p>image: </p>, <img src= {item.background_image} height={100} />
                             ))} IMAGES FOR EACH GAME BUT NEED TO ALGIN WITH OTHER INFORMATION
                         </div> } */} 
-                    </div>
+                    
                     {/* <Results games={this.state.games} /> */}
                 </div>
             </div>
