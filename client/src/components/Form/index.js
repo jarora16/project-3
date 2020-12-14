@@ -13,14 +13,11 @@ function Form(props){
           name="search"
           type="text"
           className="form-control"
-          placeholder="Search a Book"
+          placeholder="Search a Video Game"
           id="search"
         />
         <button onClick={props.handleGameSubmit} className="btn btn-dark mt-3 mb-5">
             Search for Game!
-          </button>
-          <button onClick={props.handleReviewSubmit} className="btn btn-dark mt-3 mb-5">
-          Search for Reviews!
           </button>
       </div>
     </form>
