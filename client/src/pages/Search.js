@@ -47,7 +47,9 @@ class Search extends React.Component {
         const data = await response.json();
         console.log("handlesgamesubmit: ", data);
         this.setState({ game: data.results });
+        
     };
+    
 
     // {...state,currentMenu: action.menu.filter((menu) =>
     //     state.currentCategoryId == menu.category_id)}
