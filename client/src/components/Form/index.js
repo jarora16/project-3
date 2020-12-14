@@ -6,7 +6,7 @@ function Form(props){
     <div className="container">
     <form>
       <div className="form-group">
-        <label htmlFor="search"><h2>Search for and save video games of Interest</h2></label>
+        <label htmlFor="search"><h2>Search for and Save Video Games of Interest</h2></label>
         <input
           onChange={props.handleInputChange}
           value={props.search}
