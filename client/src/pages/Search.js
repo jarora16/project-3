@@ -13,7 +13,6 @@ class Search extends React.Component {
 
 
     async componentDidMount() {
-        //console.log("poop");
         let url = 'https://rawg-video-games-database.p.rapidapi.com/games';
         var apiGame =
         {
@@ -26,42 +25,46 @@ class Search extends React.Component {
         const response = await fetch(url, apiGame);
         const data = await response.json();
         console.log(data);
-        this.setState({ game: data.results });
+        // this.setState({ game: data.results });
         console.log(this.state.game);
     };
       
 
-    makeBook = gameData => {
-        return {
-            _id: gameData.id,
-            Name: gameData.name,
-            rating: gameData.rating
-            // authors: bookData.volumeInfo.authors,
-            // description: bookData.volumeInfo.description,
-            // image: bookData.volumeInfo.imageLinks.thumbnail,
-            // link: bookData.volumeInfo.previewLink
-        }
-    }
-
+    // Has the search function working correctly
     searchGame = async gameData => {
-        let url = 'https://rawg-video-games-database.p.rapidapi.com/games/' + gameData;
+        let url = 'https://rawg-video-games-database.p.rapidapi.com/games?search=' + gameData;
         var apiGame =
         {
             "method": "GET",
             "headers": {
                 "x-rapidapi-key": "b6be4d9121msh3f7dc068abfd0afp148b28jsn9b27b7f7878e",
-                "x-rapidapi-host": "rawg-video-games-database.p.rapidapi.com"
+                "x-rapidapi-host": "rawg-video-games-database.p.rapidapi.com",
+                "useQueryString": true
             }
         }
         const response = await fetch(url, apiGame);
         const data = await response.json();
-        console.log(data);
-        // this.setState({ game: data.results[0] });
-
-        // API.savedGame(gameData)
-        //     .then(res => this.setState({ games: res.data.items.map(gameData => this.makeGame(gameData)) }))
-        //     .catch(err => console.error(err));
+        console.log("handlesgamesubmit: ", data);
+        this.setState({ game: data.results });
     };
+
+    // WORKING ON CURRENTLY
+
+    // searchReview = async gameData => {
+    //     let url = 'https://whatoplay.p.rapidapi.com/games/' ;
+    //     var apiGame =
+    //     {
+    //         "method": "GET",
+    //         "headers": {
+    //             "x-rapidapi-key": "fbc79b8878msh8445e3cc4e70eb7p11ff79jsncf79389df00f",
+    //             "x-rapidapi-host": "whatoplay.p.rapidapi.com",
+    //             "useQueryString": true
+    //         }
+    //     }
+    //     const response = await fetch(url, apiGame);
+    //     const data = await response.json();
+    //     console.log("reviewdata: ", data);
+    // };
 
     handleInputChange = event => {
         const name = event.target.name;
@@ -71,11 +74,16 @@ class Search extends React.Component {
         });
     };
 
-    handleFormSubmit = event => {
+    handleGameSubmit = event => {
         event.preventDefault();
         this.searchGame(this.state.search);
     };
 
+    handleReviewSubmit = event => {
+        event.preventDefault();
+        console.log("searching for the review: ");
+        this.searchReview(this.state.search);
+    };
 
     // var req = unirest("GET", "https://rawg-video-games-database.p.rapidapi.com/games/portal");
 
@@ -86,7 +94,8 @@ class Search extends React.Component {
                 <Form
                     search= {this.state.search}
                     handleInputChange={this.handleInputChange}
-                    handleFormSubmit={this.handleFormSubmit}
+                    handleGameSubmit={this.handleGameSubmit}
+                    handleReviewSubmit={this.handleReviewSubmit}
                     
                 /> 
                
