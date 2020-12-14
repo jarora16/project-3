@@ -30,22 +30,7 @@ class Search extends React.Component {
     };
       
 
-<<<<<<< HEAD
-    makeBook = gameData => {
-        return {
-            _id: gameData.name,
-            Name: gameData.rating,
-            rating: gameData.released
-            // authors: bookData.volumeInfo.authors,
-            // description: bookData.volumeInfo.description,
-            // image: bookData.volumeInfo.imageLinks.thumbnail,
-            // link: bookData.volumeInfo.previewLink
-        }
-    }
-
-=======
     // Has the search function working correctly
->>>>>>> master
     searchGame = async gameData => {
         let url = 'https://rawg-video-games-database.p.rapidapi.com/games?search=' + gameData;
         var apiGame =
@@ -63,28 +48,8 @@ class Search extends React.Component {
         this.setState({ game: data.results });
     };
 
-<<<<<<< HEAD
     // {...state,currentMenu: action.menu.filter((menu) =>
     //     state.currentCategoryId == menu.category_id)}
-=======
-    // WORKING ON CURRENTLY
-
-    // searchReview = async gameData => {
-    //     let url = 'https://whatoplay.p.rapidapi.com/games/' ;
-    //     var apiGame =
-    //     {
-    //         "method": "GET",
-    //         "headers": {
-    //             "x-rapidapi-key": "fbc79b8878msh8445e3cc4e70eb7p11ff79jsncf79389df00f",
-    //             "x-rapidapi-host": "whatoplay.p.rapidapi.com",
-    //             "useQueryString": true
-    //         }
-    //     }
-    //     const response = await fetch(url, apiGame);
-    //     const data = await response.json();
-    //     console.log("reviewdata: ", data);
-    // };
->>>>>>> master
 
     handleInputChange = event => {
         const name = event.target.name;
