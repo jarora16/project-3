@@ -5,7 +5,8 @@ function Header() {
     return (
         <div className="jumbotron text-center">
             <div className="container text-light">
-                <h1>Search any Video Game</h1>
+                
+                 {/* <h1>Search any Video Game</h1> */}
             </div>
         </div>
     );
