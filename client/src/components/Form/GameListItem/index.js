@@ -1,24 +1,29 @@
 import React from "react";
 
 function GameListItem(props) {
-    const { game } = props;
+    const { game, onSaveGame } = props;
+    
     return (
-        <div class="row">
+        <div class="row p-2">
         <div class="col-md-4">
         
-                <p> {game.name}</p>
-                {/* // <p>image: </p>, <img src= {item.background_image} height={100} /> // item is a place holder, it can be anything like "x" */}
+                <h5> {game.name}</h5>
         
         </div>
         <div class = "column"> <p></p></div>
-        <div class="col-md-4">
-            
-                <p>Rating: {game.rating}</p>
         
+        <div class="col-md-4"> 
+            <p>Rating: {game.rating}</p>
         </div>
-        <div class="col-md-4">
-                <p>Released Date: {game.released}</p>
         
+        <div class="col-md-4">
+                <p>Released Date: {game.released}</p> 
+                <button onClick={() => onSaveGame(game)}>Save This Game!</button>     
+        </div>
+        
+        <div class="col-md-4">
+                <img src={game.background_image} height={100} /> 
+                <hr></hr>
         </div>
         </div>
     )  

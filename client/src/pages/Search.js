@@ -79,6 +79,18 @@ class Search extends React.Component {
 
     // var req = unirest("GET", "https://rawg-video-games-database.p.rapidapi.com/games/portal");
 
+    handleSaveGame = (game) => {
+        
+        var gameData = {
+            name: game.name,
+            platforms: game.platforms,
+            rating: game.rating,
+            background_image: game.background_image,
+            esrb_rating: game.esrb_rating ? game.esrb_rating.name :null
+        };
+        console.log("saving game", gameData);
+        API.saveGame(gameData);
+    }
 
     render() {
         return (
@@ -97,9 +109,9 @@ class Search extends React.Component {
                         
                 </div>
                     
-                    {this.state.game.map((game, index) => (
+                    {this.state.game.map((game) => (
                         game.name ? (
-                            <GameListItem key={index} game={game} />
+                            <GameListItem key={game.id} game={game} onSaveGame={this.handleSaveGame}/>
                         ): null 
                         // <div class="row">
                         //     <div class="col-md-4">
