@@ -26,7 +26,7 @@ var gamefunctions = {
   deleteGame: function (id) {
     return axios.delete("/api/games/" + id).then(Game => Game.data);
   },
-  // Saves a book to the database
+  // Saves a game to the database
    saveGame: function (gameData) {
     return axios.post("/api/games", gameData).then(Game => Game.data);
   },
