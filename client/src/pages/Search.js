@@ -1,5 +1,6 @@
 import React from "react";
 import Form from "../components/Form";
+import GameListItem from "../components/Form/GameListItem";
 import Results from "../components/Results";
 import API from "../utils/API";
 
@@ -80,6 +81,18 @@ class Search extends React.Component {
 
     // var req = unirest("GET", "https://rawg-video-games-database.p.rapidapi.com/games/portal");
 
+    handleSaveGame = (game) => {
+        
+        var gameData = {
+            name: game.name,
+            platforms: game.platforms,
+            rating: game.rating,
+            background_image: game.background_image,
+            esrb_rating: game.esrb_rating ? game.esrb_rating.name :null
+        };
+        console.log("saving game", gameData);
+        API.saveGame(gameData);
+    }
 
     render() {
         return (
@@ -98,31 +111,13 @@ class Search extends React.Component {
                         
                 </div>
                     
-                    {this.state.game.map((item, index) => (
-                        item.name ? (<div class="row p-2" key = {index}>
-                        <div class="col-md-4">
-                        
-                                <p> {item.name}</p>
-                                {/* // <p>image: </p>, <img src= {item.background_image} height={100} /> // item is a place holder, it can be anything like "x" */}
-                        
-                        </div>
-                        <div class = "column"> <p></p></div>
-                        <div class="col-md-4">
-                            
-                                <p>Rating: {item.rating}</p>
-                        
-                        </div>
-                        <div class="col-md-4">
-                                <p>Released Date: {item.released}</p>
-                        
-                        </div>
-                        <div class="col-md-4">
-                            <img src= {item.background_image} height={100} />
-                        
-                        </div>
 
-                        </div>): null 
+                    {this.state.game.map((game) => (
+                        game.name ? (
+                            <GameListItem key={game.id} game={game} onSaveGame={this.handleSaveGame}/>
+                        ): null 
                        
+
                           ))}
                         {/* { <div class="col-md-3">
                             {this.state.game.map(item => (
