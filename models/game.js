@@ -3,11 +3,11 @@ const Schema = mongoose.Schema;
 
 const gameSchema = new Schema({
     _id: { type: String },
-    title: { type: String },
-    authors: { type: Array },
-    description: { type: String },
-    image: { type: String },
-    link: { type: String }
+    name: { type: String },
+    platforms: { type: Array },
+    rating: { type: String },
+    background_image: { type: String },
+    esrb_rating: { type: String }
 });
 
 const games = mongoose.model("games", gameSchema);
