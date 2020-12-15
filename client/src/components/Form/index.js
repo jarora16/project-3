@@ -19,9 +19,9 @@ function Form(props){
         <button onClick={props.handleGameSubmit} className="btn btn-dark mt-3 mb-5">
             Search for Game!
           </button>
-          <button onClick={props.handleReviewSubmit} className="btn btn-dark mt-3 mb-5">
+          {/* <button onClick={props.handleReviewSubmit} className="btn btn-dark mt-3 mb-5">
           Search for Reviews!
-          </button>
+          </button> */}
       </div>
     </form>
     </div>
