@@ -48,7 +48,9 @@ class Search extends React.Component {
         const data = await response.json();
         console.log("handlesgamesubmit: ", data);
         this.setState({ game: data.results });
+        
     };
+    
 
     // {...state,currentMenu: action.menu.filter((menu) =>
     //     state.currentCategoryId == menu.category_id)}
@@ -109,28 +111,13 @@ class Search extends React.Component {
                         
                 </div>
                     
+
                     {this.state.game.map((game) => (
                         game.name ? (
                             <GameListItem key={game.id} game={game} onSaveGame={this.handleSaveGame}/>
                         ): null 
-                        // <div class="row">
-                        //     <div class="col-md-4">
-                            
-                        //             <p>Game: {item.name}</p>
-                        //             {/* // <p>image: </p>, <img src= {item.background_image} height={100} /> // item is a place holder, it can be anything like "x" */}
-                            
-                        //     </div>
-                        //     <div class = "column"> <p></p></div>
-                        //     <div class="col-md-4">
-                                
-                        //             <p>Rating: {item.rating}</p>
-                            
-                        //     </div>
-                        //     <div class="col-md-4">
-                        //             <p>Released Date: {item.released}</p>
-                            
-                        //     </div>
-                        // </div>
+                       
+
                           ))}
                         {/* { <div class="col-md-3">
                             {this.state.game.map(item => (
