@@ -3,7 +3,7 @@
   "version": "0.1.0",
   "description": "Google Books",
   "private": true,
-  "proxy": "https://localhost:3001/",
+  "proxy": "http://localhost:3001/",
   "dependencies": {
     "axios": "^0.21.0",
     "react": "^16.6.3",
