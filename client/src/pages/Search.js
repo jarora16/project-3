@@ -109,7 +109,7 @@ class Search extends React.Component {
                         <div class = "column"> <p></p></div>
                         <div class="col-md-4">
                             
-                                <p>Rating: {item.rating}</p>
+                                <p>Rating: {item.rating}/5</p>
                         
                         </div>
                         <div class="col-md-4">
